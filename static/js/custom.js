@@ -8,6 +8,16 @@ editor.commands.addCommand({
     }
 });
 
+editor.commands.addCommand({
+    name: "save",
+    bindKey: {win: "Ctrl-S", mac: "Ctrl-S"},
+    exec: function(editor) {
+        handle_save();
+    }
+});
+
+
+
 var editor_div = document.getElementById('editor_div');
 var editor_boot_panel = document.getElementById('editor_boot_panel');
 var staff_boot_panel = document.getElementById('staff_boot_panel');
@@ -848,6 +858,14 @@ function handle_run_button()
     qc.panel_chart.setVisible(true);
     max_width = 20000;
     qc.panel_staff.staff.fullSnapshot(max_width);
+}
+
+function handle_save()
+{
+    console.log("Save attempted");
+    console.log(editor.getValue());
+    //var file = new File([editor.getValue()], "zup.js", {type: "text/plain;charset=utf-8"});
+    //saveAs(file);
 }
 
 var default_program = 'qc.reset(3);\nqc.write(0);\nqc.had(0x1);\nqc.cnot(0x2, 0x1);\n';
