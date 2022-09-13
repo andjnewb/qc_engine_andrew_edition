@@ -860,12 +860,28 @@ function handle_run_button()
     qc.panel_staff.staff.fullSnapshot(max_width);
 }
 
-function handle_save()
+async function handle_save()
 {
     console.log("Save attempted");
     console.log(editor.getValue());
-    //var file = new File([editor.getValue()], "zup.js", {type: "text/plain;charset=utf-8"});
-    //saveAs(file);
+
+    var myBlob = new Blob([editor.getValue()], {type: "text/javascript"});//Hopefuly contains the contents of our editor text
+
+    //File handler and file stream
+    const fileHandle = await window.showSaveFilePicker({
+	types: [{
+	    description: "Javascript file",
+	    accept: {"text/javascript": [".js"]}
+	}]
+    });
+
+    const fileStream = await fileHandle.createWritable();
+
+    //here we write
+    await fileStream.write(myBlob);
+    await fileStream.close();
+
+    
 }
 
 var default_program = 'qc.reset(3);\nqc.write(0);\nqc.had(0x1);\nqc.cnot(0x2, 0x1);\n';
