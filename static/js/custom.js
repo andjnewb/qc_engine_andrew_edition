@@ -16,9 +16,9 @@ editor.commands.addCommand({
     }
 });
 
-edtior.commands.addCommand({
+editor.commands.addCommand({
     name: "load",
-    bindKey: {win: "Ctrl-L", mac: "Ctrl-L"}
+    bindKey: {win: "Ctrl-L", mac: "Ctrl-L"},
     exec: function(editor){
 	handle_load();
     }
