@@ -16,6 +16,14 @@ editor.commands.addCommand({
     }
 });
 
+edtior.commands.addCommand({
+    name: "load",
+    bindKey: {win: "Ctrl-L", mac: "Ctrl-L"}
+    exec: function(editor){
+	handle_load();
+    }
+});
+
 
 
 var editor_div = document.getElementById('editor_div');
@@ -881,6 +889,11 @@ async function handle_save()
     await fileStream.write(myBlob);
     await fileStream.close();
 
+    
+}
+
+async function handle_load()
+{
     
 }
 
