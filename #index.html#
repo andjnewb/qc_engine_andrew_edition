@@ -123,12 +123,8 @@
                         </button>
 			<button type="button" class="fas fa-save" onclick="handle_save();">
 			  <span class="glyphicon glyphicon-save"</span>
-			</button>
-			<button type="button" class="fas fa-load" onclick="handle_load();">
-			  <span class="gyphicon glypicon-load"</span>
-			</button>
-			<input type="file" id="file-input"/>
-			<output id="list"></output>
+				</button>
+
                     </div>
                     <div class="btn-group">
                         <div class="btn-group" role="group">
