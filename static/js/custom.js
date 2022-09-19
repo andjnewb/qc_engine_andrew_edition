@@ -892,18 +892,24 @@ async function handle_save()
     
 }
 
-function handle_load()
+async function handle_load()
 {
-   	let input = document.createElement('input');
-  	input.type = 'file';
-  	input.onchange = _ => {
-    	// you can use this method to get file and perform respective operations
-            let files =   Array.from(input.files);
-            //console.log(files[0].prototype.text());
-        };
-  	input.click();
-	//Should use a file reader here, plan to do that when I get more time.
+    console.log("Load attempted);
+    
+    //let input = document.createElement('input');
+    //input.type = 'file'
+    
+    const fileHandle = await window.showOpenFilePicker(
+	    {
+		    types:[{
+			    description: "Javascript file",
+			    accept: {"text/javascript": [".js"]}
+		    }]
+	    }
+    );
 
+    const fileData = await fileHandle.getFile();
+    console.log(fileData);
 }
 
 var default_program = 'qc.reset(3);\nqc.write(0);\nqc.had(0x1);\nqc.cnot(0x2, 0x1);\n';
